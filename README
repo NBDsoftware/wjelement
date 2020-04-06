@@ -1,13 +1,8 @@
 WJElement - JSON manipulation in C
-==================================
 
 WJElement is a very flexible JSON library developed by Messaging Architects.
 It was created for MA's "WARP" webserver ("Warp Json Elements"), and is built
 on top of the lower-level WJReader and WJWriter libraries (also included).
-
-See the [wiki](https://github.com/netmail-open/wjelement/wiki) for more information,
-[example code](https://github.com/netmail-open/wjelement/wiki/WJElement-Example)
-and full [API](https://github.com/netmail-open/wjelement/wiki/WJElement-API) reference.
 
 WJReader and WJWriter are optimized for speed and memory-efficiency.
 WJElement focuses on flexibility and handy features, allowing C code to
@@ -24,5 +19,5 @@ package, or use it in ways we haven't thought of.  Read the docs/headers, have
 fun, and if you use it for something awesome, let us know about it!  :^)
 
 
-* Owen Swerkstrom <<owens@netmail.com>> - community/repo front-man, WJESchema
-* Micah N Gorrell &lt;micahg&#64;netmail.com&gt; - primary author of WJElement
+Owen Swerkstrom <owens@netmail.com>  - community/repo front-man, WJESchema
+Micah N Gorrell <micahg@netmail.com> - primary author of WJElement

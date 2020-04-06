@@ -1,0 +1,46 @@
+This project has been modified by us in order to add some features, like an enhaced error printing.
+
+This is a cmake project. It has not been configured as an eclipse project yet, so you will need to install cmake 
+in order to compile it. 
+
+You can compile it using the instructions in the INSTALL file, but I advice instead to do it using the standard 
+procedure when working with cmake: navigate to the root directory of the project and run:
+
+* if CMAKE_INSTALL_PATH is not provided, by default it will be /usr/local, then you need to install with 'sudo make install'
+* To compile as a static library just provide '-DSTATIC_LIB=yes' to cmake. By default it's OFF(no), therefore the library will be compiled as a dynamic lib.
+
+$mkdir build
+$cd build
+$cmake .. -DCMAKE_INSTALL_PREFIX:PATH=/install/path/here -DSTATIC_LIB=yes
+$make -j 4
+$make install
+
+Both procedures should work fine.
+
+To compile in Marenostrum IV, you will need to pass the following optimization
+flags to cmake (though you can probably skip them, since this library does not probably
+represent a bottleneck):
+
+$ CFLAGS="-mtune=skylake -xCORE-AVX512 -m64 -fPIC" cmake .. -DCMAKE_INSTALL_PREFIX:PATH=/install/path/here -DSTATIC_LIB=yes
+
+
+ 
+
+In development environments this library can be used as a DLL, but in the clusters it has to be linked
+statically, since we do not install it in a location where the linker can find it at runtime. So in production 
+environments this has to be a static library. You can switch between the two modes of compilation setting the 
+variable PRODUCTION in the main CMakeList file.  
+
+This library is not installed automatically with the PELE installation script. You have to upload manually the code to 
+the cluster, compile it there and then move the header and the .a files to locations pointed by the computersConfiguration.py script 
+(in the PELE repository, this script can be found at /PELE-1.5/scripts/Production/BuildTools).
+
+When executing make install in not production mode -that is, your local machine-, it should install the library
+ in the directory of your election (by default /usr/local). However, in production mode it won't install the 
+ compiled libraries. 
+
+The original website of the project is:
+https://github.com/netmail-open/wjelement
+
+The changes were made upon the github's revision a17a9333db9d1dc49ea70a51ab26aef31c19c631 (revision 139, under SVN), 
+which was commited on Thu Apr 03 18:24:13 2014

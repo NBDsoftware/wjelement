@@ -1,0 +1,19 @@
+Compile and install WJElement:
+
+$ cmake .. -DCMAKE_INSTALL_PREFIX:PATH=/install/path/here -DSTATIC_LIB=no
+$ make -j 4
+# make install
+
+
+Use it in your program:
+
+#include <wjelement.h>
+
+
+Link against it in your project:
+
+-lwjelement
+
+
+By default, WJElement will install to /usr/local.  If linking fails to find
+WJElement immediately after installation, you may need to run ldconfig.
